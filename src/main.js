@@ -10,8 +10,6 @@ import '@/plugins'
 // 导入 lib-flexible
 import 'lib-flexible'
 
-// 引入 aip网络请求模块
-
 Vue.config.productionTip = false
 
 new Vue({
