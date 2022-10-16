@@ -12,18 +12,13 @@ export default new Vuex.Store({
     // user: JSON.parse(window.localStorage.getItem(TOKEN_KEY)) || null
     user: getItem(TOKEN_KEY)
   },
-  getters: {
-  },
   mutations: {
     // 修改数据的函数
-    setUser (state, data) {
+    setUser(state, data) {
       state.user = data
       // 存入本地存储中  持久化保存
-      setItem('TOKEN_KEY', data)
+      setItem(TOKEN_KEY, data)
     }
   },
-  actions: {
-  },
-  modules: {
-  }
+
 })
