@@ -12,7 +12,7 @@ const request = axios.create({
 request.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   // config  本次请求的配置对象
-  console.log(config);
+  // console.log(config);
   // 拦截器去除空格处理
   config.baseURL = config.baseURL.trim()
   config.url = config.url.trim()

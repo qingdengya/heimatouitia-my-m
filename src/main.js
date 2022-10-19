@@ -9,7 +9,8 @@ import '@/styles/index.less'
 import '@/plugins'
 // 导入 lib-flexible
 import 'lib-flexible'
-
+// 加载dayjs 初始化配置
+import "@/utils/dayjs"
 Vue.config.productionTip = false
 
 new Vue({

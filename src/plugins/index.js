@@ -5,9 +5,23 @@ import { Tabbar, TabbarItem } from 'vant';
 import { Image as VanImage } from 'vant';
 import { Grid, GridItem } from 'vant';
 import { Cell, CellGroup } from 'vant';
-
-
+import { Search } from 'vant';
+import { Tab, Tabs } from 'vant';
+import { List } from 'vant';
+import { PullRefresh } from 'vant';
+import { Popup } from 'vant';
+import { Icon } from 'vant';
 // 使用组件
+
+
+
+Vue.use(Icon);
+Vue.use(Popup);
+Vue.use(PullRefresh);
+Vue.use(List);
+Vue.use(Tab);
+Vue.use(Tabs);
+Vue.use(Search);
 Vue.use(NavBar)
 Vue.use(Button)
 Vue.use(Form)

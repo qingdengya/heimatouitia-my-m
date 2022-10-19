@@ -10,7 +10,8 @@ export default new Vuex.Store({
 
     // 从本地存储中取数据
     // user: JSON.parse(window.localStorage.getItem(TOKEN_KEY)) || null
-    user: getItem(TOKEN_KEY)
+    user: getItem(TOKEN_KEY),
+
   },
   mutations: {
     // 修改数据的函数

@@ -22,7 +22,7 @@
 
       <van-tabbar-item to="/my">
         <i slot="icon" class="iconfont toutiao-wode"></i>
-        <span class="text">{{ $store.state.user ? "登录" : "未登录" }}</span>
+        <span class="text">{{ $store.state.user ? "我的" : "未登录" }}</span>
       </van-tabbar-item>
     </van-tabbar>
     <!-- 标签导航栏 -->
