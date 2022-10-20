@@ -5,7 +5,9 @@ import axios from 'axios'
 import store from '@/store';
 // 设置网络请求跟地址
 const request = axios.create({
-  baseURL: ' http://toutiao.itheima.net '
+  baseURL: ' http://toutiao.itheima.net ' //搜索文章不能用
+  // baseURL: 'http://geek.itheima.net' //搜索不能用
+
 })
 
 // 请求拦截器
