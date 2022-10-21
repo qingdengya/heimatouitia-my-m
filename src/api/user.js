@@ -30,3 +30,23 @@ export const getUserInfo = () => {
     // }
   })
 }
+
+
+// 取消用户关注
+export const cancelfollowed = (target) => {
+  return request({
+    method: 'DELETE',
+    url: `/v1_0/user/followings/${target}`,
+  })
+}
+
+// 添加用户关注
+export const addfollowed = (target) => {
+  return request({
+    method: 'POST',
+    url: `/v1_0/user/followings`,
+    data: {
+      target
+    }
+  })
+}

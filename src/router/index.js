@@ -46,7 +46,13 @@ const routes = [
     path: '/search',
     name: 'search',
     component: () => import('@/views/search'),
-  },
+  }, {
+    path: '/article/:articleId', //需要传递文章id
+    name: 'article',
+    component: () => import('@/views/article'),
+    // 开启 Props 传参，说白了就是把路由参数映射到组件的 props 数据中
+    props: true
+  }
 ]
 
 const router = new VueRouter({

@@ -1,6 +1,6 @@
-import { login, sendSms, getUserInfo } from './user'
+import { login, sendSms, getUserInfo, addfollowed, cancelfollowed } from './user'
 import { getUserChannels } from './home'
-import { getAeticleList } from './aeticle'
+import { getAeticleList, getAeticleById, addCollect, clearCollect } from './aeticle'
 import { getAllChannels, setMyChannels, delMyChannels } from './channels'
 import { getSearchSuggestion, loadSearchData } from './search'
 
@@ -18,3 +18,13 @@ export const delMyChannelsAPI = delMyChannels
 export const getSearchSuggestionAPI = getSearchSuggestion
 // 搜索结果
 export const loadSearchDataAPI = loadSearchData
+export const getAeticleByIdAPI = getAeticleById
+
+// 取消用户关注
+export const cancelfollowedAPI = cancelfollowed
+// 关注用户 
+export const addfollowedAPI = addfollowed
+// 添加收藏
+export const addCollectAPI = addCollect
+// 取消收藏
+export const clearCollectAPI = clearCollect

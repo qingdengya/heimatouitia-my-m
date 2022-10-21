@@ -11,10 +11,13 @@ import { List } from 'vant';
 import { PullRefresh } from 'vant';
 import { Popup } from 'vant';
 import { Icon } from 'vant';
+import { Loading } from 'vant';
+import { Divider } from 'vant';
 // 使用组件
 
 
-
+Vue.use(Divider);
+Vue.use(Loading);
 Vue.use(Icon);
 Vue.use(Popup);
 Vue.use(PullRefresh);

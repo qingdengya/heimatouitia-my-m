@@ -3,10 +3,25 @@
  */
 import axios from 'axios'
 import store from '@/store';
+import JSONBig from 'json-bigint'
 // 设置网络请求跟地址
 const request = axios.create({
-  baseURL: ' http://toutiao.itheima.net ' //搜索文章不能用
-  // baseURL: 'http://geek.itheima.net' //搜索不能用
+  baseURL: ' http://toutiao.itheima.net ',//搜索文章不能用
+  // baseURL: 'http://geek.itheima.net',//搜索不能用
+
+
+
+  // 自定义后端返回的原始数据
+  transformResponse: [function (data) {
+    try {
+      return JSONBig.parse(data)
+    } catch (e) {
+      return data
+    }
+    // 对接收的 data 进行任意转换处理
+    // axios 默认回在内部这样处理后端返回的数据
+    // return data;
+  }]
 
 })
 
