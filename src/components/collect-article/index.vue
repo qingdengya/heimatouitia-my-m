@@ -36,19 +36,19 @@ export default {
         // 判断value的值为 true  还是为 false
 
         if (this.value) {
-          console.log(11);
+          // console.log(11);
           // 值为真  取消收藏
           await clearCollectAPI(this.articelId);
           this.$toast.success("取消收藏! ");
         } else {
-          console.log(22);
+          // console.log(22);
           // 值为假  添加收藏
           await addCollectAPI(this.articelId);
           this.$toast.success("收藏成功! ");
         }
         this.$emit("input", !this.value);
       } catch (error) {
-        console.log(33);
+        // console.log(33);
         this.$toast.success("操作失败请,稍后再试! ");
       }
       this.loading = false;

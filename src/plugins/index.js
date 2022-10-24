@@ -13,9 +13,14 @@ import { Popup } from 'vant';
 import { Icon } from 'vant';
 import { Loading } from 'vant';
 import { Divider } from 'vant';
+import { Picker } from 'vant';
+import { DatetimePicker } from 'vant';
 // 使用组件
 
 
+
+Vue.use(DatetimePicker);
+Vue.use(Picker);
 Vue.use(Divider);
 Vue.use(Loading);
 Vue.use(Icon);

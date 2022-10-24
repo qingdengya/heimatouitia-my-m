@@ -1,11 +1,12 @@
-import { login, sendSms, getUserInfo, addfollowed, cancelfollowed } from './user'
+import { login, sendSms, getUserInfo, addfollowed, cancelfollowed, getUserProfile, updateUserProfile, updateUserPhoto } from './user'
 import { getUserChannels } from './home'
-import { getAeticleList, getAeticleById, addCollect, clearCollect } from './aeticle'
+import { getAeticleList, getAeticleById, addCollect, clearCollect, clearLikeArticle, addLikeArticle } from './aeticle'
 import { getAllChannels, setMyChannels, delMyChannels } from './channels'
 import { getSearchSuggestion, loadSearchData } from './search'
-
+import { loadComment, addCommentLike, deleteCommentLike, addComment } from './comment'
 export const loginAPI = login
 export const sendSmsAPI = sendSms
+// 获取用户信息 
 export const getUserInfoAPI = getUserInfo
 export const getUserChannelsAPI = getUserChannels
 export const getAeticleListAPI = getAeticleList
@@ -28,3 +29,33 @@ export const addfollowedAPI = addfollowed
 export const addCollectAPI = addCollect
 // 取消收藏
 export const clearCollectAPI = clearCollect
+
+
+//取消点赞 文章
+export const clearLikeArticleAPI = clearLikeArticle
+// 点赞文章
+export const addLikeArticleAPI = addLikeArticle
+
+// 评论回复回复模块
+export const loadCommentAPI = loadComment
+
+
+// 评论对回复点赞
+export const addCommentLikeAPI = addCommentLike
+
+// 取消对评论回复点赞
+export const deleteCommentLikeAPI = deleteCommentLike
+
+// 发布文章评论或评论的回复
+export const addCommentAPI = addComment
+
+// 获取用户信息
+export const getUserProfileAPI = getUserProfile
+
+
+// 更新用户信息
+export const updateUserProfileAPI = updateUserProfile
+
+
+// 更新用户照片
+export const updateUserPhotoAPI = updateUserPhoto

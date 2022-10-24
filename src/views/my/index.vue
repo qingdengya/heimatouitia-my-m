@@ -9,7 +9,7 @@
           <span class="name">{{ userInfo.name }}</span>
         </div>
         <div class="rigth">
-          <van-button size="mini" round>编辑资料</van-button>
+          <van-button size="mini" round to="/user/profile">编辑资料</van-button>
         </div>
       </div>
 
@@ -60,7 +60,7 @@
     <!-- 表格导航 -->
     <div class="van-cell-fs">
       <van-cell title="消息通知" is-link />
-      <van-cell title="小智同学" is-link />
+      <van-cell title="小智同学" is-link to="/Chat" />
     </div>
     <!-- 退出按钮 -->
     <van-button

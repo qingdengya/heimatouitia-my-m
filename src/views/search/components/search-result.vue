@@ -13,6 +13,7 @@
         :key="i"
         :title="article.title"
         clickable
+        :to="{ name: 'article', params: { articleId: article.art_id } }"
       />
     </van-list>
   </div>
@@ -61,7 +62,7 @@ export default {
         // if (Math.random() > 0.2) {
         //   JSON.parse("大大大大大大");
         // }
-        // console.log(data.data.results);
+        console.log(data.data.results);
 
         // 2.将数据添加到数组列表中
         this.list.push(...data.data.results);

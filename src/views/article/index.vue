@@ -87,15 +87,27 @@
         ></div>
         <van-divider>到底了~~</van-divider>
 
+        <!-- 文章评论 -->
+        <CommentLists
+          :articel-id="artice.art_id"
+          @onload-success="totalCommentCount = $event.total_count"
+          :list="commentList"
+          @reply-click="onReplyShow"
+        ></CommentLists>
+        <!-- 文章评论 -->
+
         <!-- 底部区域 -->
-        <!-- 底部区域 -->
-        <!-- 底部区域 -->
-        <!-- 底部区域 -->
+
         <div class="article-bottom">
-          <van-button class="comment-btn" type="default" round size="small"
+          <van-button
+            class="comment-btn"
+            type="default"
+            round
+            size="small"
+            @click="isPostShow = true"
             >写评论</van-button
           >
-          <van-icon name="comment-o" badge="123" color="#777" />
+          <van-icon name="comment-o" :badge="totalCommentCount" color="#777" />
           <!-- 收藏组件 -->
           <!-- <van-icon color="#777" name="star-o" /> -->
           <CollectArticle
@@ -104,15 +116,27 @@
             :articel-id="artice.art_id"
           ></CollectArticle>
           <!-- 收藏组件 -->
-          <van-icon color="#777" name="good-job-o" />
+
+          <!-- 点赞组件 -->
+          <LikeArticle v-model="artice.attitude" :articel-id="artice.art_id">
+          </LikeArticle>
+          <!-- 点赞组件 -->
+          <!-- <van-icon color="#777" name="good-job-o" /> -->
           <van-icon name="share" color="#777777"></van-icon>
         </div>
         <!-- /底部区域 -->
-        <!-- /底部区域 -->
-        <!-- /底部区域 -->
-        <!-- /底部区域 -->
+
+        <!-- 发布评论弹出层 -->
+        <van-popup v-model="isPostShow" position="bottom">
+          <CommentPost
+            :target="artice.art_id"
+            @closePopup="onPostSuccess"
+          ></CommentPost>
+        </van-popup>
+        <!-- 发布评论弹出层 -->
       </div>
       <!-- /加载完成-文章详情 -->
+      <!-- 发布评论弹出层 -->
 
       <!-- 加载失败：404 -->
       <div v-else-if="errStatus" class="error-wrap">
@@ -129,6 +153,16 @@
       </div>
       <!-- /加载失败：其它未知错误（例如网络原因或服务端异常） -->
     </div>
+    <!-- 评论回复 -->
+    <van-popup v-model="isReplyShow" style="height: 100%" position="bottom">
+      <!-- v-if 条件渲染   true:渲染元素节点 false:不渲染 -->
+      <commentReply
+        v-if="isReplyShow"
+        :comment="currentComment"
+        @close="isReplyShow = false"
+      ></commentReply>
+    </van-popup>
+    <!-- 评论回复 -->
   </div>
 </template>
 
@@ -140,9 +174,26 @@ import "@/css/github-markdown.css";
 import { ImagePreview } from "vant";
 import FollowUser from "@/components/follow-user";
 import CollectArticle from "@/components/collect-article";
+import LikeArticle from "@/components/like-article";
+import CommentLists from "@/views/article/components/comment-list.vue";
+import CommentPost from "@/views/article/components/comment-post";
+import commentReply from "@/views/article/components/comment-reply";
 export default {
   name: "ArticleIndex",
-  components: { FollowUser, CollectArticle },
+  components: {
+    FollowUser,
+    CollectArticle,
+    LikeArticle,
+    CommentLists,
+    CommentPost,
+    commentReply,
+  },
+  // 给所有的后代组件提供数据
+  provide: function () {
+    return {
+      articleId: this.articleId,
+    };
+  },
   props: {
     articleId: {
       type: [Number, String, Object],
@@ -155,6 +206,11 @@ export default {
       loading: true,
       errStatus: 0, //失败状态码
       followedloading: false,
+      totalCommentCount: 0,
+      isPostShow: false, //控制发布评论的显示状态
+      commentList: [], //评论列表
+      isReplyShow: false, //控制回复评论的显示状态
+      currentComment: {}, //当前点击回复评论项
     };
   },
 
@@ -174,7 +230,7 @@ export default {
         // console.log(data);
         this.artice = data.data;
         // this.loading = false;
-        // console.log(this.artice);
+        console.log(this.artice);
         // 初始化图片点击预览
 
         // console.log(this.$refs["article-content"]);
@@ -242,6 +298,15 @@ export default {
     //   }
     //   this.followedloading = false;
     // },
+    onPostSuccess(data) {
+      this.isPostShow = false;
+      // console.log(data.new_obj.content);
+      this.commentList.unshift(data.new_obj);
+    },
+    onReplyShow(comment) {
+      this.isReplyShow = true;
+      this.currentComment = comment;
+    },
   },
 };
 </script>

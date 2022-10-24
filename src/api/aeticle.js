@@ -41,3 +41,25 @@ export const clearCollect = (target) => {
     url: `/v1_0/article/collections/${target}`,
   })
 }
+
+// 取消点赞文章
+export const clearLikeArticle = (target) => {
+  return request({
+    method: 'DELETE',
+    url: `/v1_0/article/likings/${target}`,
+  })
+}
+
+// 点赞文章
+export const addLikeArticle = (target) => {
+  return request({
+    method: 'POST',
+    url: `/v1_0/article/likings`,
+    data: {
+      target
+    }
+  })
+}
+
+
+
